@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canva-like Website</title>
+  <style>
+    #sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: #f0f0f0;
+      float: left;
+    }
+
+    #workspace {
+      width: calc(100% - 200px);
+      height: 100vh;
+      float: left;
+    }
+
+    #sidebar .upload-button {
+      margin: 10px;
+    }
+
+    #workspace .image {
+      position: absolute;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <input type="file" id="uploadInput" class="upload-button" multiple />
+    <!-- Add more sidebar elements here -->
+  </div>
+  <div id="workspace"></div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const sidebar = document.getElementById('sidebar');
+      const workspace = document.getElementById('workspace');
+      const uploadInput = document.getElementById('uploadInput');
+
+      // Handle file upload
+      uploadInput.addEventListener('change', handleUpload);
+
+      function handleUpload(event) {
+        const files = event.target.files;
+        Array.from(files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const image = document.createElement('img');
+            image.src = e.target.result;
+            image.classList.add('image');
+            workspace.appendChild(image);
+
+            // Make the image draggable
+            makeElementDraggable(image);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // Make elements draggable
+      function makeElementDraggable(element) {
+        let pos1 = 0,
+          pos2 = 0,
+          pos3 = 0,
+          pos4 = 0;
+
+        element.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          element.style.top = element.offsetTop - pos2 + 'px';
+          element.style.left = element.offsetLeft - pos1 + 'px';
+        }
+
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

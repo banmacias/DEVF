@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+header {display: flex;
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    top: 0;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 80px;
+    padding:4px 16px;
+}
+.font-page{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.btn-nav {
+    background-color: #111;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    margin: 12px 2px;
+    padding:0px 18px;
+    border: none;
+    cursor: pointer;
+}
+.finder{
+    background-color: #e2e2e2;
+    border-radius: 30px;
+    font-size: 16px;
+    margin: 12px 2px;
+    padding:0px 860px 0px 38px;
+    border: none;
+    color: #676666;
+    cursor: pointer;
+}
+.finder:hover{
+    background-color: #d6d6d6;
+}
+.absolute-img{
+    position: absolute;
+    left: 310px;
+    top: 32px;
+}
+.hover-icon{
+    border-radius: 50px;
+}
+.hover-icon:hover{
+    background-color: #d6d6d6;
+}
+#content{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    justify-content: center;
+    margin: 80px 88px 0px 88px;
+    row-gap: 60px;
+    column-gap: 15px;
+}
+#content img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1em;
+
+}
+.card-image {
+    position: relative;
+}
+.card-image:nth-child(odd){
+    grid-row-start: span 2;
+}
+.buttonhover{
+    position: absolute;
+    top: 2%;
+    left: 57%;
+    display: none;
+    background-color: #af2222;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    padding: 16px 16px;
+    border-radius: 3em; 
+    border: none
+}
+.card-image:hover .buttonhover{
+    display: block;
+}
+.card-image:hover .buttonhover {
+    position: absolute;
+    opacity: 1;
+}
+.iconhover{
+    position: absolute;
+    top: 80%;
+    left: 57%;
+    display: none;
+    background-color: #e2e2e2;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px 10px;
+    border-radius: 6em; 
+    width: 40px;
+    height: 40px;
+    border: none
+}
+.card-image:hover .iconhover{
+    display: block;
+}
+.card-image:hover .iconhover {
+    opacity: 1;
+    position: absolute;
+}
+@media screen and (min-width:320px) {
+    
+}
+@media screen and (min-width:480px) {
+    
+}
+@media screen and (min-width:768px) {
+    
+}
+@media screen and (min-width:1024px) {
+    
+}
